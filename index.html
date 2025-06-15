@@ -3,13 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Father's Day</title>
     <style>
         * {
             font-family: Verdana, Geneva, Tahoma, sans-serif;
             color: white;
             background-color: rgb(7, 6, 61);
             /* border: solid; */
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100%;
+            flex-direction: column;
+            align-items: center;
         }
         h1 {
             /* margin: 0 50%; */
@@ -20,29 +28,61 @@
             color: black;
             background-color: white;
         }
+
+        .puzzle-area {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+        }
+        .cover {
+            position: absolute;
+            top: 256px;
+            right: 16px;
+            width: 40%;
+            height: 256px;
+            background-color: rgba(0, 0, 0);
+        }
+        #cssInput {
+            width: 30%;
+            height: 200px;
+            max-width: 300px;
+            max-height: 200px;
+            resize: none;
+            padding: 10px;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
     <h1>
-        Hello
+        Solve the puzzle to reveal the card!
     </h1>
     <p>
-        Hint goes here Hint goes here Hint goes here Hint goes here 
-        Hint goes here Hint goes here Hint goes here Hint goes here 
-        Hint goes here Hint goes here Hint goes here Hint goes here 
+        Developers often say<br> that CSS can stink,<br> but it might be used<br> to uncover a link!
     </p>
     <div class="puzzle-area">
-        <textarea id="story" name="story" rows="5" cols="33">It was a dark and stormy night...
-        </textarea>
+        <textarea id="cssInput" name="cssInput" placeholder="Enter your answer here..."></textarea>
         <div class="puzzle">
             <div class="cover"></div>
-            <a onclick="redirect()" id="target-link" href="https://youtu.be/dQw4w9WgXcQ" target="_blank">asdasdsad</a>
+            <a onclick="redirect()" id="target-link" href="https://youtu.be/dQw4w9WgXcQ" target="_blank">You Found It! :o</a>
         </div>
     </div>
     <script>
         function redirect() {
-            window.location.href = 'card.html';
+            window.open('https://youtu.be/dQw4w9WgXcQ', '_blank').focus();
+            // window.location.href = 'card.html';
+            setTimeout(() => {
+                window.location.href = 'card.html';
+            }, 200);
         }
+
+        document.getElementById('cssInput').addEventListener('input', function() {
+            const css = this.value;
+            const cover = document.querySelector('.cover');
+            cover.style.cssText = css;
+        });
     </script>
 </body>
 </html>
